@@ -51,7 +51,7 @@ class ResidentController extends Controller
 
         $resident->save();
 
-        return response('Resident successfully created.', 201);
+        return ('Resident successfully created.');
     }
 
     /**

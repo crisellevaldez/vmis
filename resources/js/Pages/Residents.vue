@@ -54,11 +54,11 @@
                         </tbody>
                     </table>
                 </div>
+                <button type="button" class="btn btn-primary float-right mt-3 mb-3" data-toggle="modal" data-target="#addResident"> Add New </button>
             </div>
         </div>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addResident"> Add New </button>
-
+        <!-- Modal -->
         <div class="modal fade" id="addResident" tabindex="-1" role="dialog" aria-labelledby="addResident" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -123,7 +123,15 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <div v-if="errors" class="pt-2 pb-2 bg-red-500 text-white py-2 px-4 pr-0 rounded font-bold mb-4 shadow-lg">
+                                <div v-for="(v, k) in errors" :key="k" class="p-0 m-0">
+                                    <p v-for="error in v" :key="error" class="text-sm p-1 m-0 ">
+                                    {{ error }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary float-right">Add</button>
                         </form>
                     </div>
                 </div>
@@ -153,24 +161,30 @@
                     birth_date: '',
                     address: '',
                     birthdate: ''
-                }
+                },
+
+                errors: null,
             }
         },
 
         methods: {
             async addResident(){
-                const res = await axios.post('/api/residents', this.resident);
-
-                if (res.status === 201){
+                await axios.post('/api/residents', this.resident)
+                .then(data => {
                     Toast.fire({
                         icon:'success',
-                        title: res.data
+                        title: data
                     });
 
                     document.getElementById('formResident').reset();
                     $('#addResident').modal('hide');
                     this.getResident();
-                } 
+                })
+                .catch(errors => {
+                    this.errors = errors.response.data.errors;
+                });;
+
+    
                 
 
             },
