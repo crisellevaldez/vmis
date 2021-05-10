@@ -24,6 +24,10 @@
                                 <jet-nav-link :href="route('residents')" :active="route().current('residents')">
                                     Residents
                                 </jet-nav-link>
+
+                                <jet-nav-link :href="route('forms')" :active="route().current('forms')">
+                                    Forms
+                                </jet-nav-link>
                             </div>
                         </div>
 

@@ -7,13 +7,17 @@ import { InertiaProgress } from '@inertiajs/progress';
 
 const el = document.getElementById('app');
 
-const Swal = require('sweetalert2').default;
+const Swal = require('sweetalert2')
+window.Swal = Swal;
+
 window.Toast = Swal.mixin({
     toast: true,
     position: 'top-right',
     timer: 3000,
     timerProgressBar: true
 });
+
+
 
 createApp({
     render: () =>

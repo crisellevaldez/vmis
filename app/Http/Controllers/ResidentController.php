@@ -14,7 +14,7 @@ class ResidentController extends Controller
      */
     public function index()
     {
-        return Resident::all();
+        return Resident::latest()->paginate(10);
     }
 
     /**
@@ -51,7 +51,7 @@ class ResidentController extends Controller
 
         $resident->save();
 
-        return ('Resident successfully created.');
+        return ($resident);
     }
 
     /**
@@ -60,9 +60,16 @@ class ResidentController extends Controller
      * @param  \App\Models\Resident  $resident
      * @return \Illuminate\Http\Response
      */
-    public function show(Resident $resident)
+    public function show($id)
     {
-        //
+        $resident = Resident::find($id);
+        return $resident;
+    }
+
+    public function print($id)
+    {
+        $resident = Resident::find($id);
+        return view('printable.example')->with('data', $resident);
     }
 
     /**

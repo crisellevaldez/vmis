@@ -24,6 +24,11 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/business', function () {
+    return view('printable.business-clearance');
+});
+
+
 //Routes for navigation links
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -36,3 +41,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/residents', function () {
     return Inertia::render('Residents');
 })->name('residents');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/forms', function () {
+    return Inertia::render('Forms');
+})->name('forms');

@@ -11,42 +11,50 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     
                     <!-- Table Residents -->
-                    <table class="border-collapse w-full">
+                    <table class="border-collapse w-full align-center">
                         <thead>
                             <tr>
-                                <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">First Name</th>
-                                <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Last Name</th>
-                                <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Address</th>
-                                <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Gender</th>
-                                <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
-                                <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Action</th>
+                                <th class="text-left p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">ID</th>
+                                <th class="text-left p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">First Name</th>
+                                <th class="text-left p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Last Name</th>
+                                <th class="text-left p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Address</th>
+                                <th class="text-left p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Gender</th>
+                                <th class="text-left p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
+                                <th class="text-left p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="resident in residents" :key="resident.id" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                            <tr v-for="resident in residents" :key="resident.id" class="text-left bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-left border border-b block lg:table-cell relative lg:static">
+                                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
+                                    {{resident.id}}
+                                </td>
+                                
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-left border border-b block lg:table-cell relative lg:static">
                                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
                                     {{resident.first_name}}
                                 </td>
-                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-left border border-b block lg:table-cell relative lg:static">
                                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Country</span>
                                     {{resident.last_name}}
                                 </td>
-                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-left border border-b block lg:table-cell relative lg:static">
                                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Country</span>
                                     {{resident.middle_name}}
                                 </td>
-                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-left border border-b block lg:table-cell relative lg:static">
                                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Country</span>
                                     {{resident.address}}
                                 </td>
-                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-left border border-b block lg:table-cell relative lg:static">
                                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
                                     <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">with case</span>
                                 </td>
-                                <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                <td class="w-full lg:w-auto p-3 text-gray-800 text-left border border-b block lg:table-cell relative lg:static">
                                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
-                                    <a href="#" class="text-blue-400 hover:text-blue-600 underline">Edit</a>
+                                    <a href="#" data-toggle="modal" data-target="#viewResident"  v-on:click="viewResidentInfo(resident.id)" class="btn btn-success">
+                                        <i class="fas fa-print"></i>
+                                    </a>
                                     <a href="#" class="text-blue-400 hover:text-blue-600 underline pl-6">Remove</a>
                                 </td>
                             </tr>
@@ -58,7 +66,7 @@
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Add Modal -->
         <div class="modal fade" id="addResident" tabindex="-1" role="dialog" aria-labelledby="addResident" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -138,6 +146,25 @@
             </div>
         </div>
 
+        <!-- View Modal -->
+        <div class="modal fade" id="viewResident" tabindex="-1" role="dialog" aria-labelledby="viewResident" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="viewResident"> Brgy. Matungao Bulakan, Bulacan </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <a href="#" v-on:click="printExample()" class="btn btn-success">
+                            <i class="fas fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </app-layout>
 </template>
 
@@ -163,36 +190,77 @@
                     birthdate: ''
                 },
 
+                residentView: [],
+
                 errors: null,
             }
         },
 
         methods: {
-            async addResident(){
-                await axios.post('/api/residents', this.resident)
-                .then(data => {
-                    Toast.fire({
-                        icon:'success',
-                        title: data
+
+            viewResidentInfo(id){
+                axios.get('/api/residents/'+id)
+                .then((res) => {
+                    this.residentView = res.data;
+                }).catch((err) => {
+                    console.log(err);
+                });
+            },
+
+            printExample(){
+                Swal.fire({
+                    title: 'Print resident '+this.residentView.first_name,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Print'
+                    })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+
+                            axios.get('/api/example/'+this.residentView.id)
+                            .then((res) => {
+                                var printWindow = window.open();
+                                printWindow.document.write(res);
+                                printWindow.document.close();
+                            }).catch((err) => {
+                                console.log(err);
+                            });
+                        }
                     });
 
-                    document.getElementById('formResident').reset();
+            },
+
+            addResident(){
+                axios.post('/api/residents', this.resident)
+                .then((response) => {
+                    this.resident = '';
                     $('#addResident').modal('hide');
                     this.getResident();
-                })
-                .catch(errors => {
-                    this.errors = errors.response.data.errors;
-                });;
 
+                    Toast.fire({
+                        icon:'success',
+                        title: 'Resident Successfully created.'
+                    });
+
+                    /*Swal.fire(
+                        'Created',
+                        'You successfully created resident '+response.data.first_name+' '+response.data.first_name+'.',
+                        'success'
+                    );*/
+                    
+                }, (error) => {
+                    this.errors = error.response.data.errors;
+                });
     
                 
-
             },
 
             getResident(){
                 axios.get('/api/residents')
                 .then((res) => {
-                    this.residents = res.data;
+                    this.residents = res.data.data;
                 }).catch((err) => {
                     console.log(err);
                 });
