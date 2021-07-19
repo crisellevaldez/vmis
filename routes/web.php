@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ResidentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +25,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/business', function () {
-    return view('printable.business-clearance');
-});
-
+//Reports
+Route::get('business-clearance',  [ResidentController::class, 'business']);
+Route::get('medical-certificate',  [ResidentController::class, 'medical']);
+Route::get('not-married',  [ResidentController::class, 'notmarried']);
+Route::get('indigency',  [ResidentController::class, 'indigency']);
 
 //Routes for navigation links
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -45,3 +47,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/residents', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/forms', function () {
     return Inertia::render('Forms');
 })->name('forms');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/census', function () {
+    return Inertia::render('Census');
+})->name('census');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/houses', function () {
+    return Inertia::render('Houses');
+})->name('houses');

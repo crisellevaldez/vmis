@@ -21,12 +21,12 @@
                                     Dashboard
                                 </jet-nav-link>
 
-                                <jet-nav-link :href="route('residents')" :active="route().current('residents')">
+                                <jet-nav-link :href="route('houses')" :active="route().current('houses')">
                                     Residents
                                 </jet-nav-link>
 
                                 <jet-nav-link :href="route('forms')" :active="route().current('forms')">
-                                    Forms
+                                    Request Forms
                                 </jet-nav-link>
                             </div>
                         </div>

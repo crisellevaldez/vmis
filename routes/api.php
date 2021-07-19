@@ -20,4 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('residents', 'App\Http\Controllers\ResidentController');
-Route::get('example/{id}',  [ResidentController::class, 'print']);
+
+Route::get('showall',  [ResidentController::class, 'show_all']);
+
+Route::apiResource('houses', 'App\Http\Controllers\HouseController');

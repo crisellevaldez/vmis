@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\House;
 use App\Models\Resident;
 use Illuminate\Http\Request;
+use View;
 
 class ResidentController extends Controller
 {
@@ -15,6 +16,11 @@ class ResidentController extends Controller
     public function index()
     {
         return Resident::latest()->paginate(10);
+    }
+
+    public function show_all()
+    {
+        return Resident::all();
     }
 
     /**
@@ -36,22 +42,30 @@ class ResidentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'address' => 'required',
-            'birthdate' => 'required'
+            'residents.*.first_name' => 'required',
+            'residents*.last_name' => 'required',
+            'residents*.birth_date' => 'required',
+            'house_info.house_number' => 'required|unique:houses,house_number',
+            'house_info.street' => 'required',
+            'house_info.sitio' => 'required',
         ]);
 
-        $resident = new Resident();
-        $resident->first_name = $request->first_name;
-        $resident->last_name = $request->last_name;
-        $resident->middle_name = $request->middle_name;
-        $resident->address = $request->address;
-        $resident->birthdate = $request->birthdate;
+        $house_id = House::create($request->input('house_info'));
+        $house_id = $house_id->id;
 
-        $resident->save();
+        foreach ($request->input('residents') as $key=>$value){
+            $data[] = [
+                'first_name' => $value['first_name'],
+                'last_name' => $value['last_name'],
+                'middle_name' => $value['middle_name'],
+                'birth_date' => $value['birth_date'],
+                'house_id' => $house_id
+            ];
+        }
 
-        return ($resident);
+        Resident::insert($data);
+
+
     }
 
     /**
@@ -62,10 +76,70 @@ class ResidentController extends Controller
      */
     public function show($id)
     {
-        $resident = Resident::find($id);
+        $resident = Resident::findOrFail($id);
         return $resident;
     }
 
+    //Reports
+    public function business(Request $request)
+    {
+
+        $data = [
+            'resident' => json_decode($request->residents),
+            'business' => json_decode($request->business)
+        ];
+
+        $house = House::findOrFail($data['resident']->house_id);
+        $house_info = [
+            'house' => $house,
+        ];
+        return view('printable.business-clearance')->with('data', $data)->with('house', $house_info);
+    }
+
+    public function medical(Request $request)
+    {
+
+        $data = [
+            'resident' => json_decode($request->residents),
+            'med' => json_decode($request->treated_date)
+        ];
+
+
+        return view('printable.medical-certificate')->with('data', $data);
+    }
+
+    public function notmarried(Request $request)
+    {
+
+        $data = [
+            'resident' => json_decode($request->residents),
+            'notmarried' => json_decode($request->notmarried)
+        ];
+
+        $house = House::findOrFail($data['resident']->house_id);
+        $house_info = [
+            'house' => $house,
+        ];
+
+        return view('printable.not-married')->with('data', $data)->with('house', $house_info);
+    }
+
+    public function indigency(Request $request)
+    {
+
+        $data = [
+            'resident' => json_decode($request->residents)
+        ];
+
+        $house = House::findOrFail($data['resident']->house_id);
+        $house_info = [
+            'house' => $house,
+        ];
+        return view('printable.indigency')->with('data', $data)->with('house', $house_info);
+    }
+
+    //End Reports
+    
     public function print($id)
     {
         $resident = Resident::find($id);

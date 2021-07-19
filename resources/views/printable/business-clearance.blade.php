@@ -21,7 +21,7 @@
             margin:0;
             height: 1px;
         }
-        /*.notes {
+        .notes {
             background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
             background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
             background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
@@ -31,7 +31,7 @@
             border: none;
             line-height: 31px;
             padding: 8px;
-        }*/
+        }
         @media print{
             .no-print{
                 display: none !important;
@@ -45,46 +45,60 @@
             <br>
             <button class="btn btn-primary" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
         </div>
-        
-        <br>
-        <div class="w-100 text-center h5">Republika ng Pilipinas</div>
-        <div class="w-100 text-center h5">Lalawigan ng Bulakan</div>
-        <div class="w-100 text-center h5 mb-3">Bayan ng Bulakan</div>
-        <div class="w-100 text-center h4"><b>BARANGAY NG MATUNGAO</b></div>
-        <div class="w-100 text-center h4"><b>TANGGAPAN NG PUNONG BARANGAY</b></div>
+
+        <div class="row" style="margin-left: 0px">
+            <div class="col-3"> <img alt="image name" src="{{ url('imgs/logo.jpeg') }}" / width="200px"> </div>
+
+            <div class="col-6 ">
+                <div class="w-100 text-center h5">Republika ng Pilipinas</div>
+                <div class="w-100 text-center h5">Lalawigan ng Bulakan</div>
+                <div class="w-100 text-center h5 mb-3">Bayan ng Bulakan</div>
+                <div class="w-100 text-center h4"><b>BARANGAY NG MATUNGAO</b></div>
+                <div class="w-100 text-center h4"><b>TANGGAPAN NG PUNONG BARANGAY</b></div>
+            </div>
+        </div>
         <hr size="30" noshade> <hr size="30" noshade>
         <br><br>
         <div class="w-100 text-center h4"><b>BUSINESS CLEARANCE</b></div>
         <div class="row" style="margin-left: 0px">
-            <p class="text-nowrap"> Ito ay isang pagpapatunay na si _____ naninirahan sa _____
+            <p class="text-nowrap"> Ito ay isang pagpapatunay na si <u> {{ $data['resident']->first_name.' '.$data['resident']->last_name}} </u> naninirahan sa <u> {{ $house['house']->house_number.' '.$house['house']->street.' '.$house['house']->sitio.' Matungao Bulakan, Bulacan' }} </u>
             ay kasalukuyang nangangasiwa o nagmamay-ari ng negosyong:
 
-             <div class="w-100 text-center h4"><b>______</b></div>
+             <div class="w-100 text-center h4"><b> <u> {{ $data['business']->name }} </u> </b></div>
              <div class="w-100 text-center h6"> (pangalan/uri ng negosyo)</div>
 
             <div class="col-3 d-flex offset-3">
                 <div class="w-100 text-center">
-                        BAGO (for new business)
+                    @if($data['business']->type =='newBusiness')         
+                        <input type="checkbox" checked disabled>  BAGO (for new business)
+                    @else
+                        <input type="checkbox" disabled>  BAGO (for new business)    
+                    @endif
                 </div>
             </div>
 
             <div class="col-3 d-flex">
                 <div class="w-100 text-center">
-                        DATI (for re-newal)
+                    @if($data['business']->type =='oldBusiness')         
+                        <input type="checkbox" checked disabled>  DATI (for re-newal)
+                    @else
+                        <input type="checkbox" disabled>  DATI (for re-newal)    
+                    @endif
                 </div>
             </div>
             
-            <p> na mamatagpuan sa panungkulang ____ sakop ng barangay na ito. </br>
+            <p> na mamatagpuan sa panungkulang <u> {{ $data['business']->address }} </u> sakop ng barangay na ito. </br>
 
             At alinsunod sa initadhana ng Artikulo Blg. 4 at Seksyon 152 ng Bagong Batas ng
             Pamahalaang Lokal ng Taong 1991 (R.A. 7160) pinagpasyahan ng Sangguniang Barangay ng Matungao 
-            ang pagkakaloob ng pahintulot ng nasabing <i> <u> negosyo, </u> </i> na may bisa hanggang sa ________. </br></br> 
+            ang pagkakaloob ng pahintulot ng nasabing <i> <u> negosyo, </u> </i> na may bisa hanggang sa <u> {{ $data['business']->period_date }} </u>. </br></br> 
 
-            Ibinigay ayon sa kahilingan ni _____ at maaring gamitin sa ano mang layunin na 
+            Ibinigay ayon sa kahilingan ni {{ $data['resident']->first_name.' '.$data['resident']->last_name}} </u> at maaring gamitin sa ano mang layunin na 
             naayon sa batas. </br></br> 
 
+            Ipinagkaloob ngayong ika <u> {{ Carbon\Carbon::now()->format('jS') }} </u> ng <u> {{ Carbon\Carbon::now()->format('F') }} </u>,.
 
-            Inihanda ni: ______ </br>
+            Inihanda ni: <u> {{ Auth::user()->name }} </u> </br>
             Pangalan at Lagda</br>
             Katungkulan: <u> Brgy. Clerk </u> </p>
 
