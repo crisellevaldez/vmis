@@ -83,7 +83,6 @@
             Ibinigay ayon sa kahilingan ni _____ at maaring gamitin sa ano mang layunin na 
             naayon sa batas. </br></br> 
 
-            Ipinagkaloob ngayong ika ____ ng _______,.
 
             Inihanda ni: ______ </br>
             Pangalan at Lagda</br>
