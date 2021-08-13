@@ -40,7 +40,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
     return Inertia::render('Home');
 })->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/residents', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/residents/{id}', function () {
     return Inertia::render('Residents');
 })->name('residents');
 

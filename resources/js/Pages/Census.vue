@@ -2,7 +2,7 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <inertia-link :href="route('residents')">
+                <inertia-link :href="route('houses')">
                     <jet-application-mark class="block w-auto" />
 
                     Residents
@@ -41,6 +41,7 @@
                                     <thead>
                                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                             <th class="py-3 px-6 text-left"></th>
+                                            <th class="py-3 px-6 text-left">Fam No.</th>
                                             <th class="py-3 px-6 text-left">First Name</th>
                                             <th class="py-3 px-6 text-left">Last Name</th>
                                             <th class="py-3 px-6 text-center">Middle Name</th>
@@ -62,6 +63,17 @@
                                                     </svg>
                                                 </div>
                                             </td>
+
+                                            <td class="py-3 px-6">
+                                                <select v-model="residents[index].family_no" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </td>
+
                                             <td class="py-3 px-6">
                                                 <input type="text" v-model="residents[index].first_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                             </td>
@@ -190,6 +202,11 @@
                     });
 
                     this.residents.splice(1,this.residents.length);
+                    this.house = {
+                        house_number: '',
+                        street: '',
+                        sitio: ''
+                    },
                     this.residents[0] = {
                         first_name: '',
                         last_name: '',

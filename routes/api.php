@@ -22,5 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('residents', 'App\Http\Controllers\ResidentController');
 
 Route::get('showall',  [ResidentController::class, 'show_all']);
+Route::get('resident-house/{id}',  [ResidentController::class, 'resident_house']);
 
 Route::apiResource('houses', 'App\Http\Controllers\HouseController');

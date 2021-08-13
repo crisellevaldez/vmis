@@ -124,6 +124,15 @@
             may kaukulang "<u>penalty</u>". <i>
             </p>
         </div>
+
+        <div class="container-fluid mb-5">
+            <div class="row">
+                <div class="col-sm-2 offset-10">
+                    {!! QrCode::size(100)->generate('ID: '.$data['resident']->id."\n".'Full Name: '.$data['resident']->first_name.' '.$data['resident']->last_name) !!} 
+                </div>
+            </div>
+        </div>
+        
     </div>
 </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\House;
 use App\Models\Resident;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use View;
 
 class ResidentController extends Controller
@@ -21,6 +22,17 @@ class ResidentController extends Controller
     public function show_all()
     {
         return Resident::all();
+    }
+
+    public function resident_house($id)
+    {
+        $resident = Resident::where('house_id', '=', $id)->orderBy('family_no')->get();
+        $house_info = House::where('id', '=', $id)->get();
+        $data = [
+            'residents' => $resident,
+            'house_info' => $house_info
+        ];
+        return $data;
     }
 
     /**
@@ -59,6 +71,7 @@ class ResidentController extends Controller
                 'last_name' => $value['last_name'],
                 'middle_name' => $value['middle_name'],
                 'birth_date' => $value['birth_date'],
+                'family_no' => $value['family_no'],
                 'house_id' => $house_id
             ];
         }
@@ -135,6 +148,8 @@ class ResidentController extends Controller
         $house_info = [
             'house' => $house,
         ];
+
+
         return view('printable.indigency')->with('data', $data)->with('house', $house_info);
     }
 

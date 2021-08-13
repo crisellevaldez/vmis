@@ -41,7 +41,7 @@
 </head>
 <body>
     <div class="container bg-white">
-    <div class="no-print">
+        <div class="no-print">
             <br>
             <button class="btn btn-primary" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
         </div>
@@ -57,6 +57,7 @@
                 <div class="w-100 text-center h4"><b>TANGGAPAN NG PUNONG BARANGAY</b></div>
             </div>
         </div>
+
         <hr size="30" noshade> <hr size="30" noshade>
         <br><br>
         <div class="w-100 text-center h3"><b>PAGPAPATUNAY</b></div>
@@ -82,57 +83,54 @@
         <div class="row">
             <div class="col-12 col-md-8"> </div>
             <div class="col-6 col-md-4 text-left">Nagpapatunay:</div>
-          </div> <br><br>
-          <div class="row">
+        </div> <br><br>
+
+        <div class="row">
             <div class="col-12 col-md-8"> </div>
             <div class="col-6 col-md-4 text-left"><h4> IGG. MARIA ANA METHELYN O. NAHIL </h4></div>
-          </div>
-          <div class="row">
+        </div>
+
+        <div class="row">
             <div class="col-12 col-md-8"> </div>
             <div class="col-6 col-md-4 text-left">Punong Barangay</div>
-          </div>
-          </div><br><br>
-                      <table class = "table-sm table-bordered">
-                          <tbody>
-                              <tr>
-                                <td>SEDULA BLG.</td>
-                                <td></td>
-                              </tr>
-                          <tbody>
-                              <tr>
-                                  <td>KINUHA SA</td>
-                                  <td>BULAKAN, BULACAN</td>
-                              </tr>
-                            <tbody>
-                                <tr>
-                                    <td>PETSA</td>
-                                    <td></td>
-                                </tr>
-                                <tbody>
-                                    <tr>
-                                        <td>RESIBO BLG.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tbody>
-                                        <tr>
-                                            <td>HALAGA</td>
-                                            <td>PHP 50.00</td>
-                                        </tr>
-                      </table>
-                      <br>
+        </div>
+
+        <table class = "table-sm table-bordered">
+            <tbody>
+                <tr>
+                <td>SEDULA BLG.</td>
+                <td></td>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>KINUHA SA</td>
+                    <td>BULAKAN, BULACAN</td>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>PETSA</td>
+                    <td></td>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>RESIBO BLG.</td>
+                    <td></td>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>HALAGA</td>
+                    <td>PHP 50.00</td>
+                </tr>
+        </table>
+
+        <div class="container-fluid mb-5">
+            <div class="row">
+                <div class="col-sm-2 offset-10">
+                    {!! QrCode::size(100)->generate('ID: '.$data['resident']->id."\n".'Full Name: '.$data['resident']->first_name.' '.$data['resident']->last_name) !!} 
+                </div>
             </div>
-
-
-                  
-        
         </div>
     </div>
-
-    
-                      
-
-
-
 
 </body>
 </html>
