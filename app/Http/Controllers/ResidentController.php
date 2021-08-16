@@ -6,6 +6,7 @@ use App\Models\Resident;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use View;
+use DB;
 
 class ResidentController extends Controller
 {
@@ -28,9 +29,15 @@ class ResidentController extends Controller
     {
         $resident = Resident::where('house_id', '=', $id)->orderBy('family_no')->get();
         $house_info = House::where('id', '=', $id)->get();
+        $fam_info = DB::table('residents')
+                 ->select('family_no', DB::raw('count(*) as total'))
+                 ->groupBy('family_no')
+                 ->where('house_id', '=', $id)
+                 ->get();
         $data = [
             'residents' => $resident,
-            'house_info' => $house_info
+            'house_info' => $house_info,
+            'fam_info' => $fam_info
         ];
         return $data;
     }

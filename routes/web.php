@@ -55,3 +55,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/census', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/houses', function () {
     return Inertia::render('Houses');
 })->name('houses');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/profile/{id}', function () {
+    return Inertia::render('Profile');
+})->name('profile');

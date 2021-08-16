@@ -15,7 +15,15 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white shadow-xl sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
-                        <div v-for="(house,index) in house_info" :key="index" class="grid grid-cols-3 gap-2 p-2 rounded">
+                        <div v-for="(house,index) in house_info" :key="index" class="grid grid-cols-4 gap-2 p-2 rounded">
+                            <p class="inline mb-0 mt-3"> House Number: </p>
+                            <p class="inline mb-0 mt-3"> Street: </p>
+                            <p class="inline mb-0 mt-3"> Sitio: </p>
+                            <p class="inline mb-0 mt-3"> Number of Family: </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+                        <div v-for="(house,index) in house_info" :key="index" class="grid grid-cols-4 gap-2 p-2 rounded">
                             <div class="flex border rounded bg-gray-300 items-center p-2 ">
                                 <input type="text" placeholder="House Number" v-model="house.house_number"
                                     class="bg-gray-300 w-full focus:outline-none outline-none border-none text-gray-700" readonly/>
@@ -29,17 +37,25 @@
                                 <input type="text" placeholder="Sitio" v-model="house.sitio"
                                     class="bg-gray-300 w-full focus:outline-none outline-none border-none text-gray-700" readonly/>
                             </div>
+
+                            <div class="flex border rounded bg-gray-300 items-center p-2 ">
+                                <input type="text" placeholder="Sitio" v-model="fam.length"
+                                    class="bg-gray-300 w-full focus:outline-none outline-none border-none text-gray-700" readonly/>
+                            </div>
                         </div>
                     </div>
+                    
 
                     <div class="bg-white shadow-md rounded my-6 overflow-x-auto">
                         <table class="w-full table-auto">
                             <thead>
                                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-left"></th>
                                     <th class="py-3 px-6 text-left">First Name</th>
                                     <th class="py-3 px-6 text-left">Last Name</th>
                                     <th class="py-3 px-6 text-center">Middle Name</th>
                                     <th class="py-3 px-6 text-center">Birth date</th>
+                                    <th class="py-3 px-6 text-center">Age</th>
                                     <th class="py-3 px-6 text-center">Contact No.</th>
                                     <th class="py-3 px-6 text-center">Occupation</th>
                                     <th class="py-3 px-6 text-center">PWD</th>
@@ -50,7 +66,17 @@
                             </thead>
                             <tbody v-for="(resident,index) in residents" :key="index" class="text-gray-600 text-sm font-light" id="resident-body">
                                 <tr class="border-b border-gray-200 hover:bg-gray-100" :class="{'bg-yellow-100': residents[index].family_no === 1,  'bg-green-100': residents[index].family_no === 2, 'bg-blue-100': residents[index].family_no === 3, 'bg-purple-100': residents[index].family_no === 4, 'bg-pink-100': residents[index].family_no === 5}">
-                                 
+                                    <td class="py-3 px-6 pr-0">
+                                        <inertia-link :href="route('profile', { id: residents[index].id })">
+                                            <jet-application-mark class="block w-auto" />
+                                            <div class="w-4 mx-auto transform hover:text-purple-500 hover:scale-110 ">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                </svg>
+                                            </div>
+                                        </inertia-link>     
+                                    </td>
                                     <td class="py-3 px-6">
                                         <input type="text" v-model="residents[index].first_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                     </td>
@@ -62,6 +88,9 @@
                                     </td>
                                     <td class="py-3 px-6">
                                         <input type="date" v-model="residents[index].birth_date" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                    </td>
+                                    <td class="py-3 px-6">
+                                        <input type="text" :value="getAge(residents[index].birth_date)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                     </td>
                                     <td class="py-3 px-6">
                                         <input type="text" v-model="residents[index].contact_no" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
@@ -116,6 +145,7 @@
                     birthdate: ''
                 },
 
+                fam: null,
                 house_info: [],
                 errors: null,
             }
@@ -132,13 +162,22 @@
                 .then((res) => {
                     this.residents = res.data.residents;
                     this.house_info = res.data.house_info;
+                    this.fam = res.data.fam_info;
                 }).catch((err) => {
                     console.log(err);
                 });
             },
 
-            updateResident(){
-
+            getAge(dateString){
+                var today = new Date();
+                var birthDate = new Date(dateString);
+                var age = today.getFullYear() - birthDate.getFullYear();
+                var m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+                {
+                    age--;
+                }
+                return age;
             }
         },
 
