@@ -88,6 +88,28 @@ class ResidentController extends Controller
 
     }
 
+    public function add_resident(Request $request)
+    {
+        $this->validate($request, [
+            'resident.first_name' => 'required',
+            'resident.last_name' => 'required',
+            'resident.birth_date' => 'required',
+            'resident.family_no' => 'required'
+        ]);
+
+        $data [] = [
+            'first_name' => $request['resident']['first_name'],
+            'last_name' => $request['resident']['last_name'],
+            'middle_name' => $request['resident']['middle_name'],
+            'birth_date' => $request['resident']['birth_date'],
+            'family_no' => $request['resident']['family_no'],
+            'house_id' => $request['house_info'][0]['id']
+        ];
+        
+        Resident::insert($data); 
+
+    }
+
     /**
      * Display the specified resource.
      *

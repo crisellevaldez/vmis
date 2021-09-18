@@ -18,7 +18,18 @@
                                 <th class="py-3 px-6 text-center">Sitio</th>
                             </tr>
                         </thead>
+
+                        <!-- <tbody v-if="houses.length" class="text-gray-600 text-sm font-light" id="resident-body">
+                            <tr  class="border-b border-gray-200 hover:bg-gray-100">
+                    
+                                    <td class="py-3 px-6">
+                                        <p> None </p>
+                                    </td>
+                            </tr> 
+                        </tbody> -->
+
                         <tbody v-for="house in houses" :key="house.id" class="text-gray-600 text-sm font-light" id="resident-body">
+
                             <tr class="border-b border-gray-200 hover:bg-gray-100">
                                 <td class="py-3 px-6 pr-0">
                                     <inertia-link :href="route('residents', { id: house.id })">
