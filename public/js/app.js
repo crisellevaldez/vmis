@@ -25253,7 +25253,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "class": "text-gray-600 text-sm font-light",
           id: "resident-body"
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", {
-          "class": ["border-b border-gray-200 hover:bg-gray-100", {
+          "class": ["border-b border-gray-200", {
             'bg-yellow-100': $data.residents[index].family_no === 1,
             'bg-green-100': $data.residents[index].family_no === 2,
             'bg-blue-100': $data.residents[index].family_no === 3,
@@ -25280,11 +25280,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: function onClick($event) {
             return $options.addResident($data.residents[index]);
           },
-          "class": "py-3 px-6 pr-0"
+          "class": "py-3 px-6 pr-0 cursor-pointer"
         }, [_hoisted_22], 8
         /* PROPS */
         , ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
-          "class": "py-3 px-6 pr-0",
+          "class": "py-3 px-6 pr-0 cursor-pointer",
           onClick: function onClick($event) {
             return $options.updateResident($data.residents[index]);
           }
@@ -25292,7 +25292,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , ["onClick"]), $data.residents[index].id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", {
           key: 2,
-          "class": "py-3 px-6 pr-0",
+          "class": "py-3 px-6 pr-0 cursor-pointer",
           onClick: function onClick($event) {
             return $options.deleteResident($data.residents[index]);
           }
@@ -25348,7 +25348,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           key: 0,
           type: "text",
           value: $options.getAge($data.residents[index].birth_date),
-          "class": "bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none "
+          "class": "bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ",
+          readonly: ""
         }, null, 8
         /* PROPS */
         , ["value"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.residents[index].id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", _hoisted_38)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {

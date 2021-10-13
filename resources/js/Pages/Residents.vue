@@ -69,7 +69,7 @@
                                     </tr>
                             </thead>
                             <tbody v-for="(resident,index) in residents" :key="index" class="text-gray-600 text-sm font-light" id="resident-body">
-                                <tr class="border-b border-gray-200 hover:bg-gray-100" :class="{'bg-yellow-100': residents[index].family_no === 1,  'bg-green-100': residents[index].family_no === 2, 'bg-blue-100': residents[index].family_no === 3, 'bg-purple-100': residents[index].family_no === 4, 'bg-pink-100': residents[index].family_no === 5}">
+                                <tr class="border-b border-gray-200" :class="{'bg-yellow-100': residents[index].family_no === 1,  'bg-green-100': residents[index].family_no === 2, 'bg-blue-100': residents[index].family_no === 3, 'bg-purple-100': residents[index].family_no === 4, 'bg-pink-100': residents[index].family_no === 5}">
                                     <td v-if="(residents[index].id)" class="py-3 px-6 pr-0">
                                         <inertia-link :href="route('profile', { id: residents[index].id })">
                                             <jet-application-mark class="block w-auto" />
@@ -82,7 +82,7 @@
                                         </inertia-link>     
                                     </td>
 
-                                    <td v-if="(!residents[index].id)" v-on:click="addResident(residents[index])" class="py-3 px-6 pr-0">
+                                    <td v-if="(!residents[index].id)" v-on:click="addResident(residents[index])" class="py-3 px-6 pr-0 cursor-pointer">
                                        
                                         <div class="w-4 mx-auto transform hover:text-purple-500 hover:scale-110 ">
                                             <span class="material-icons-outlined text-base">
@@ -91,7 +91,7 @@
                                         </div>   
                                     </td>
 
-                                    <td class="py-3 px-6 pr-0" v-on:click="updateResident(residents[index])">
+                                    <td class="py-3 px-6 pr-0 cursor-pointer" v-on:click="updateResident(residents[index])">
                                         <div class="w-4 m-0 transform hover:text-purple-500 hover:scale-110 ">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -99,7 +99,7 @@
                                         </div> 
                                     </td>
 
-                                    <td v-if="(residents[index].id)" class="py-3 px-6 pr-0" v-on:click="deleteResident(residents[index])">
+                                    <td v-if="(residents[index].id)" class="py-3 px-6 pr-0 cursor-pointer" v-on:click="deleteResident(residents[index])">
                                         <div class="w-4 m-0 transform hover:text-purple-500 hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -138,7 +138,7 @@
                                         <input type="date" v-model="residents[index].birth_date" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                     </td>
                                     <td class="py-3 px-6">
-                                        <input type="text" v-if="(residents[index].id)" :value="getAge(residents[index].birth_date)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        <input type="text" v-if="(residents[index].id)" :value="getAge(residents[index].birth_date)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none " readonly>
                                         <input type="text" v-if="(!residents[index].id)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                     </td>
                                     <td class="py-3 px-6">
@@ -249,7 +249,6 @@
                 }, (error) => {
                     this.errors = error.response.data.errors;
                 });
-    
                 
             },
 
