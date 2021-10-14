@@ -106,7 +106,7 @@ class ResidentController extends Controller
             'house_id' => $request['house_info'][0]['id']
         ];
         
-        Resident::insert($data); 
+        Resident::insert($data);
 
     }
 
