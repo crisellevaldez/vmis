@@ -72,7 +72,7 @@
                             <tbody v-if="residents.length == 0" class="text-gray-600 text-sm font-light" id="resident-body">
                                 <tr  class="border-b border-gray-200 hover:bg-gray-100">
                         
-                                        <td class="py-3 px-6" colspan="12">
+                                        <td class="py-3 px-6" colspan="14">
                                         None
                                         </td>
                                 </tr> 
@@ -323,15 +323,29 @@
             },
 
             getAge(dateString){
-                var today = new Date();
+                /*var today = new Date();
                 var birthDate = new Date(dateString);
                 var age = today.getFullYear() - birthDate.getFullYear();
                 var m = today.getMonth() - birthDate.getMonth();
                 if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
                 {
                     age--;
+                }*/
+                var birthday = +new Date(dateString);
+                var age = ((Date.now() - birthday) / (31557600000));
+                if(age < 1){
+                    var today = new Date();
+                    var birthDate = new Date(dateString);
+                    var monthAge = today.getFullYear() - birthDate.getFullYear();
+                    var m = today.getMonth() - birthDate.getMonth();
+                    monthAge = monthAge * 12 + m;
+                    return monthAge+' months';
                 }
-                return age;
+
+                else{
+                    return ~~((Date.now() - birthday) / (31557600000));
+                }
+                
             }
         },
 

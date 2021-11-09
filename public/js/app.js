@@ -18979,16 +18979,27 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getAge: function getAge(dateString) {
-      var today = new Date();
+      /*var today = new Date();
       var birthDate = new Date(dateString);
       var age = today.getFullYear() - birthDate.getFullYear();
       var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+      {
+          age--;
+      }*/
+      var birthday = +new Date(dateString);
+      var age = (Date.now() - birthday) / 31557600000;
 
-      if (m < 0 || m === 0 && today.getDate() < birthDate.getDate()) {
-        age--;
+      if (age < 1) {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var monthAge = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        monthAge = monthAge * 12 + m;
+        return monthAge + ' months';
+      } else {
+        return ~~((Date.now() - birthday) / 31557600000);
       }
-
-      return age;
     }
   },
   created: function created() {
@@ -19132,7 +19143,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
-  src: "/imgs/logo.jpeg",
+  src: "/imgs/logo.png",
   alt: "image",
   width: "200px"
 }, null, -1
@@ -19162,7 +19173,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
-  src: "/imgs/logo.jpeg",
+  src: "/imgs/logo.png",
   alt: "image",
   width: "200px"
 }, null, -1
@@ -19194,7 +19205,7 @@ var _hoisted_1 = {
   "class": "min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"
 };
 var _hoisted_2 = {
-  "class": "w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
+  "class": "w-full sm:max-w-md mt-0 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
 };
 function render(_ctx, _cache) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "logo")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])]);
@@ -19219,7 +19230,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "content-center w-32"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
-  src: "imgs/logo.jpeg",
+  src: "/imgs/logo.png",
   alt: "image"
 })], -1
 /* HOISTED */
@@ -25076,7 +25087,7 @@ var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
   "class": "border-b border-gray-200 hover:bg-gray-100"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
   "class": "py-3 px-6",
-  colspan: "12"
+  colspan: "14"
 }, " None ")], -1
 /* HOISTED */
 );

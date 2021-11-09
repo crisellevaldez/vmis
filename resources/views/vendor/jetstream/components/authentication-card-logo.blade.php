@@ -6,5 +6,5 @@
 </a> -->
 
 <a href="/">
-    <img src="/imgs/logo.jpeg" alt="image" width="200px"  /> 
+    <img src="/imgs/logo.png" alt="image" width="200px"  /> 
 </a>
