@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\House;
+use App\Models\User;
 use App\Models\Resident;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -23,6 +24,19 @@ class ResidentController extends Controller
     public function show_all()
     {
         return Resident::all();
+    }
+
+    public function resident_number()
+    {
+        $residentCount = Resident::count();
+        $userCount = User::count();
+        
+        $data = [
+            'residentCount' => $residentCount,
+            'userCount' => $userCount
+        ];
+
+        return $data;
     }
 
     public function resident_house($id)
@@ -210,7 +224,13 @@ class ResidentController extends Controller
      */
     public function update(Request $request, Resident $resident)
     {
-        //
+        $this->validate($request, [
+            'data.first_name' => 'required',
+            'data.last_name' => 'required',
+            'data.birth_date' => 'required'
+        ]);
+        Resident::where('id',$request->data['id'])->update($request->data);
+       
     }
 
     /**
@@ -221,6 +241,6 @@ class ResidentController extends Controller
      */
     public function destroy(Resident $resident)
     {
-        //
+        Resident::where('id',$resident->id)->delete();
     }
 }

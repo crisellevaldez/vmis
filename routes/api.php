@@ -23,6 +23,7 @@ Route::apiResource('residents', 'App\Http\Controllers\ResidentController');
 
 Route::get('showall',  [ResidentController::class, 'show_all']);
 Route::get('resident-house/{id}',  [ResidentController::class, 'resident_house']);
+Route::get('resident-number',  [ResidentController::class, 'resident_number']);
 
 Route::post('add-resident',  [ResidentController::class, 'add_resident']);
 

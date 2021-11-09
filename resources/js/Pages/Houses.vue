@@ -19,14 +19,14 @@
                             </tr>
                         </thead>
 
-                        <!-- <tbody v-if="houses.length" class="text-gray-600 text-sm font-light" id="resident-body">
+                        <tbody v-if="houses.length == 0" class="text-gray-600 text-sm font-light" id="resident-body">
                             <tr  class="border-b border-gray-200 hover:bg-gray-100">
                     
-                                    <td class="py-3 px-6">
-                                        <p> None </p>
+                                    <td class="py-3 px-6" colspan="4">
+                                       None
                                     </td>
                             </tr> 
-                        </tbody> -->
+                        </tbody>
 
                         <tbody v-for="house in houses" :key="house.id" class="text-gray-600 text-sm font-light" id="resident-body">
 

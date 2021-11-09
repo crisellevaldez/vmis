@@ -68,6 +68,16 @@
                                     <th class="py-3 px-6 text-center">School</th>
                                     </tr>
                             </thead>
+
+                            <tbody v-if="residents.length == 0" class="text-gray-600 text-sm font-light" id="resident-body">
+                                <tr  class="border-b border-gray-200 hover:bg-gray-100">
+                        
+                                        <td class="py-3 px-6" colspan="12">
+                                        None
+                                        </td>
+                                </tr> 
+                            </tbody>
+
                             <tbody v-for="(resident,index) in residents" :key="index" class="text-gray-600 text-sm font-light" id="resident-body">
                                 <tr class="border-b border-gray-200" :class="{'bg-yellow-100': residents[index].family_no === 1,  'bg-green-100': residents[index].family_no === 2, 'bg-blue-100': residents[index].family_no === 3, 'bg-purple-100': residents[index].family_no === 4, 'bg-pink-100': residents[index].family_no === 5}">
                                     <td v-if="(residents[index].id)" class="py-3 px-6 pr-0">
@@ -139,7 +149,7 @@
                                     </td>
                                     <td class="py-3 px-6">
                                         <input type="text" v-if="(residents[index].id)" :value="getAge(residents[index].birth_date)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none " readonly>
-                                        <input type="text" v-if="(!residents[index].id)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        <input type="text" v-if="(!residents[index].id)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none " readonly>
                                     </td>
                                     <td class="py-3 px-6">
                                         <input type="text" v-model="residents[index].contact_no" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
@@ -253,11 +263,48 @@
             },
 
             updateResident(residentInfo){
-                console.log(residentInfo);
+                axios.post('/api/residents/' + residentInfo.id, { 
+                    data: residentInfo,
+                    _method: 'patch'                   
+                })
+                .then(function (response) {
+                    Toast.fire({
+                        icon:'success',
+                        title: 'Resident Successfully updated.'
+                    });
+
+                    this.getResident();
+                })
+                .catch(function (error) {
+                    console.log(error);            
+                });
             },
 
             deleteResident(residentInfo){
-                console.log(residentInfo);
+                Swal.fire({
+                    title: 'Are you sure you want to remove Resident?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Remove'
+                    })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            axios.delete('/api/residents/' + residentInfo.id)
+                            .then((res) => {
+                                Toast.fire({
+                                    icon:'success',
+                                    title: 'Resident Successfully removed.'
+                                });
+                                this.getResident();
+                            }).catch((err) => {
+                                console.log(err);
+                            });
+                        }
+                    }, (error) => {
+                        this.errors = error.response.data.errors;
+                    });
             },
 
             getResident(){
@@ -290,7 +337,7 @@
 
         created(){
             this.getResident();
-            
+            //Hello
         }
     }
 </script>
