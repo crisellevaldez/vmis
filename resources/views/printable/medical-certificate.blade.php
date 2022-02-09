@@ -41,7 +41,7 @@
 </head>
 <body>
     <div class="container bg-white">
-    <div class="no-print">
+        <div class="no-print">
             <br>
             <button class="btn btn-primary" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
         </div>
@@ -57,12 +57,13 @@
                 <div class="w-100 text-center h4"><b>TANGGAPAN NG PUNONG BARANGAY</b></div>
             </div>
         </div>
+
         <hr size="30" noshade> <hr size="30" noshade>
         <br><br>
         <div class="row" style="margin-left: 0px">
 
-        <div class = " text-left">Date: {{ Carbon\Carbon::now() }}</div>
-            <br><br>
+            <div class = " text-left">Date: {{ Carbon\Carbon::now() }}</div>
+                <br><br>
 
             <div class = "w-100 text-left h4">Gen. Gregorio H. Del Pilar</div>
             <div class = "text-left h4">District Hospital</div>
@@ -71,35 +72,38 @@
             <div class = "text-left h4">Dear Ma'am/Sir,</div>
             <br><br>
             <div class="row" style="margin-left: 0px">
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This Barangay is requesting in your good office to issue a Medical Certificate to
-            <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {{ $data['resident']->first_name.' '.$data['resident']->last_name}}
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> who were treated in your Hospital
-                    <u>&nbsp;&nbsp;&nbsp;&nbsp; {{ $data['med']->treated_date }}&nbsp;&nbsp;&nbsp;&nbsp;</u> for injuries caused by allege mauling incident.</p>
-            <br>
-            <p class = "text-left">Said Medical Certificate is needed by the afore mentioned persons, for whatever legal purpose it may serve them. </p><br>
-            <p class="text-left">Hoping for your kind consideration.</p><br>
-                        
-    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-8"> </div>
-                        <div class="col-6 col-md-4 text-center">Nagpapatunay:</div>
-                    </div> <br><br><br><br><br><br>
-                      <div class="row">
-                        <div class="col-12"> </div>
-                        <div class="col-12 text-center"><h4> IGG. MARIA ANA METHELYN O. NAHIL </h4></div>
-                      </div>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This Barangay is requesting in your good office to issue a Medical Certificate to
+                <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{ $data['resident']->first_name.' '.$data['resident']->last_name}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> who were treated in your Hospital
+                        <u>&nbsp;&nbsp;&nbsp;&nbsp; {{ $data['med']->treated_date }}&nbsp;&nbsp;&nbsp;&nbsp;</u> for injuries caused by allege mauling incident.</p>
+                <br>
+                <p class = "text-left">Said Medical Certificate is needed by the afore mentioned persons, for whatever legal purpose it may serve them. </p><br>
+                <p class="text-left">Hoping for your kind consideration.</p><br>            
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-8"> </div>
+                <div class="col-6 col-md-4 text-center">Nagpapatunay:</div>
+            </div> <br><br><br><br><br><br>
+
+            <div class="row">
+                <div class="col-12"> </div>
+                <div class="col-12 text-center"><h4> IGG. MARIA ANA METHELYN O. NAHIL </h4></div>
+            </div>
                       
-                      <div class="row">
-                        <div class="col-12 "> </div>
-                        <div class="col-12 text-center">Punong Barangay</div>
-                      </div>
+            <div class="row">
+                <div class="col-12 "> </div>
+                <div class="col-12 text-center">Punong Barangay</div>
+            </div>
+        </div>
 
 
-    <div class="container-fluid mb-5">
-        <div class="row">
-            <div class="col-sm-2 offset-10">
-                {!! QrCode::size(100)->generate('ID: '.$data['resident']->id."\n".'Full Name: '.$data['resident']->first_name.' '.$data['resident']->last_name) !!} 
+        <div class="container-fluid mb-5">
+            <div class="row">
+                <div class="col-sm-2 offset-10">
+                    {!! QrCode::size(100)->generate('ID: '.$data['resident']->id."\n".'Full Name: '.$data['resident']->first_name.' '.$data['resident']->last_name) !!} 
+                </div>
             </div>
         </div>
     </div>

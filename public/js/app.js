@@ -18979,14 +18979,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getAge: function getAge(dateString) {
-      /*var today = new Date();
-      var birthDate = new Date(dateString);
-      var age = today.getFullYear() - birthDate.getFullYear();
-      var m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
-      {
-          age--;
-      }*/
       var birthday = +new Date(dateString);
       var age = (Date.now() - birthday) / 31557600000;
 
@@ -25038,42 +25030,17 @@ var _hoisted_17 = {
   "class": "bg-white shadow-md rounded my-6 overflow-x-auto"
 };
 var _hoisted_18 = {
-  "class": "w-full table-auto"
+  "class": "w-full table-auto table-residents"
 };
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", {
   "class": "bg-gray-200 text-gray-600 uppercase text-sm leading-normal"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-left"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-left"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-left"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-left"
-}, "Fam No."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-left"
-}, "First Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-left"
-}, "Last Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-center"
-}, "Middle Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-center"
-}, "Birth date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-center"
-}, "Age"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-center"
-}, "Contact No."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-center"
-}, "Occupation"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-center"
-}, "PWD"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-center"
-}, "Ethnicity"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-center"
-}, "Religion"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "py-3 px-6 text-center"
-}, "School")])], -1
+  "class": "py-3 text-center",
+  colspan: "4"
+}, " Actions "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+  "class": "py-3 text-left"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n                                    <th class=\"py-3 px-6 text-left\">Fam No.</th>\r\n                                    <th class=\"py-3 px-6 text-left\">First Name</th>\r\n                                    <th class=\"py-3 px-6 text-left\">Last Name</th>\r\n                                    <th class=\"py-3 px-6 text-center\">Middle Name</th>\r\n                                    <th class=\"py-3 px-6 text-center\">Birth date</th>\r\n                                    <th class=\"py-3 px-6 text-center\">Age</th>\r\n                                    <th class=\"py-3 px-6 text-center\">Contact No.</th>\r\n                                    <th class=\"py-3 px-6 text-center\">Occupation</th>\r\n                                    <th class=\"py-3 px-6 text-center\">PWD</th>\r\n                                    <th class=\"py-3 px-6 text-center\">Ethnicity</th>\r\n                                    <th class=\"py-3 px-6 text-center\">Religion</th>\r\n                                    <th class=\"py-3 px-6 text-center\">School</th>\r\n                                    ")])], -1
 /* HOISTED */
 );
 
@@ -25212,19 +25179,19 @@ var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 var _hoisted_35 = {
-  "class": "py-3 px-6"
+  "class": "py-3"
 };
 var _hoisted_36 = {
-  "class": "py-3 px-6"
+  "class": "py-3"
 };
 var _hoisted_37 = {
-  "class": "py-3 px-6"
+  "class": "py-3"
 };
 var _hoisted_38 = {
-  "class": "py-3 px-6"
+  "class": "py-3"
 };
 var _hoisted_39 = {
-  "class": "py-3 px-6"
+  "class": "py-3"
 };
 var _hoisted_40 = {
   key: 1,
@@ -25233,22 +25200,22 @@ var _hoisted_40 = {
   readonly: ""
 };
 var _hoisted_41 = {
-  "class": "py-3 px-6"
+  "class": "py-3 "
 };
 var _hoisted_42 = {
-  "class": "py-3 px-6"
+  "class": "py-3 "
 };
 var _hoisted_43 = {
-  "class": "py-3 px-6"
+  "class": "py-3 "
 };
 var _hoisted_44 = {
-  "class": "py-3 px-6"
+  "class": "py-3 "
 };
 var _hoisted_45 = {
-  "class": "py-3 px-6"
+  "class": "py-3 "
 };
 var _hoisted_46 = {
-  "class": "py-3 px-6"
+  "class": "py-3 "
 };
 var _hoisted_47 = {
   key: 0,
@@ -25403,8 +25370,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "class": "bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none "
         }, [_hoisted_30, _hoisted_31, _hoisted_32, _hoisted_33, _hoisted_34], 8
         /* PROPS */
-        , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.residents[index].family_no]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.residents[index].family_no]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "text",
+          style: {
+            "width": "150px"
+          },
+          placeholder: "First Name",
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].first_name = $event;
           },
@@ -25413,6 +25384,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].first_name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "text",
+          style: {
+            "width": "150px"
+          },
+          placeholder: "Last Name",
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].last_name = $event;
           },
@@ -25421,6 +25396,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].last_name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "text",
+          placeholder: "Middle Name",
+          style: {
+            "width": "150px"
+          },
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].middle_name = $event;
           },
@@ -25429,6 +25408,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].middle_name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "date",
+          placeholder: "Birth date",
+          style: {
+            "width": "180px"
+          },
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].birth_date = $event;
           },
@@ -25438,6 +25421,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].birth_date]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_39, [$data.residents[index].id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
           key: 0,
           type: "text",
+          style: {
+            "width": "150px"
+          },
           value: $options.getAge($data.residents[index].birth_date),
           "class": "bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ",
           readonly: ""
@@ -25445,14 +25431,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , ["value"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$data.residents[index].id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", _hoisted_40)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "text",
+          placeholder: "Contact No.",
+          style: {
+            "width": "150px"
+          },
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].contact_no = $event;
           },
           "class": "bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none "
         }, null, 8
         /* PROPS */
-        , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].contact_no]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].contact_no]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "text",
+          placeholder: "Occupation",
+          style: {
+            "width": "200px"
+          },
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].occupation = $event;
           },
@@ -25461,6 +25455,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].occupation]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "text",
+          placeholder: "PWD",
+          style: {
+            "width": "150px"
+          },
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].pwd = $event;
           },
@@ -25469,6 +25467,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].pwd]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "text",
+          placeholder: "Ethnicity",
+          style: {
+            "width": "183px"
+          },
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].ethnicity = $event;
           },
@@ -25477,6 +25479,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].ethnicity]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "text",
+          placeholder: "Religion",
+          style: {
+            "width": "200px"
+          },
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].religion = $event;
           },
@@ -25485,13 +25491,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* PROPS */
         , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].religion]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
           type: "text",
+          placeholder: "School",
+          style: {
+            "width": "200px"
+          },
           "onUpdate:modelValue": function onUpdateModelValue($event) {
             return $data.residents[index].school = $event;
           },
           "class": "bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none "
         }, null, 8
         /* PROPS */
-        , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].school]])])], 2
+        , ["onUpdate:modelValue"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.residents[index].school]])])])], 2
         /* CLASS */
         )]);
       }), 128

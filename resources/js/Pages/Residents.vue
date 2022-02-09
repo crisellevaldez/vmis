@@ -48,12 +48,12 @@
 
                     <div class="bg-white shadow-md rounded my-6 overflow-x-auto">
                         <button class="btn btn-primary float-right mr-2 mb-2" v-on:click="addRow()"> Add Row </button>
-                        <table class="w-full table-auto">
+                        <table class="w-full table-auto table-residents">
                             <thead>
                                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                    <th class="py-3 px-6 text-left"></th>
-                                    <th class="py-3 px-6 text-left"></th>
-                                    <th class="py-3 px-6 text-left"></th>
+                                    <th class="py-3 text-center" colspan="4" > Actions </th>
+                                    <th class="py-3 text-left"></th>
+                                    <!--
                                     <th class="py-3 px-6 text-left">Fam No.</th>
                                     <th class="py-3 px-6 text-left">First Name</th>
                                     <th class="py-3 px-6 text-left">Last Name</th>
@@ -66,6 +66,7 @@
                                     <th class="py-3 px-6 text-center">Ethnicity</th>
                                     <th class="py-3 px-6 text-center">Religion</th>
                                     <th class="py-3 px-6 text-center">School</th>
+                                    -->
                                     </tr>
                             </thead>
 
@@ -135,40 +136,49 @@
                                         </select>
                                     </td>
                                    
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-model="residents[index].first_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-model="residents[index].last_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-model="residents[index].middle_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="date" v-model="residents[index].birth_date" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-if="(residents[index].id)" :value="getAge(residents[index].birth_date)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none " readonly>
-                                        <input type="text" v-if="(!residents[index].id)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none " readonly>
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-model="residents[index].contact_no" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-model="residents[index].occupation" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-model="residents[index].pwd" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-model="residents[index].ethnicity" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none">
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-model="residents[index].religion" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
-                                    </td>
-                                    <td class="py-3 px-6">
-                                        <input type="text" v-model="residents[index].school" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
-                                    </td>
+                                   <div>
+                                        <td class="py-3">
+                                            <input type="text" style="width: 150px" placeholder="First Name" v-model="residents[index].first_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
+
+                                        <td class="py-3">
+                                            <input type="text" style="width: 150px" placeholder="Last Name" v-model="residents[index].last_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
+
+                                        <td class="py-3">
+                                            <input type="text" placeholder="Middle Name" style="width: 150px" v-model="residents[index].middle_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
+                                        
+                                        <td class="py-3">
+                                            <input type="date" placeholder="Birth date" style="width: 180px" v-model="residents[index].birth_date" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
+
+                                        <td class="py-3">
+                                            <input type="text" style="width: 150px" v-if="(residents[index].id)" :value="getAge(residents[index].birth_date)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none " readonly>
+                                            <input type="text" v-if="(!residents[index].id)" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none " readonly>
+                                        </td>
+                                        <td class="py-3 ">
+                                            <input type="text" placeholder="Contact No." style="width: 150px" v-model="residents[index].contact_no" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
+                                    </div>
+
+                                    <div>
+                                        <td class="py-3 ">
+                                            <input type="text" placeholder="Occupation" style="width: 200px" v-model="residents[index].occupation" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
+                                        <td class="py-3 ">
+                                            <input type="text" placeholder="PWD" style="width: 150px" v-model="residents[index].pwd" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
+                                        <td class="py-3 ">
+                                            <input type="text" placeholder="Ethnicity" style="width: 183px" v-model="residents[index].ethnicity" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none">
+                                        </td>
+                                        <td class="py-3 ">
+                                            <input type="text" placeholder="Religion" style="width: 200px" v-model="residents[index].religion" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
+                                        <td class="py-3 ">
+                                            <input type="text" placeholder="School" style="width: 200px" v-model="residents[index].school" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
+                                    </div>
                                     
                                 </tr>   
                                         
@@ -323,14 +333,6 @@
             },
 
             getAge(dateString){
-                /*var today = new Date();
-                var birthDate = new Date(dateString);
-                var age = today.getFullYear() - birthDate.getFullYear();
-                var m = today.getMonth() - birthDate.getMonth();
-                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
-                {
-                    age--;
-                }*/
                 var birthday = +new Date(dateString);
                 var age = ((Date.now() - birthday) / (31557600000));
                 if(age < 1){
