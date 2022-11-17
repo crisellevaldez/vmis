@@ -45,9 +45,11 @@
                                             <th class="py-3 px-6 text-left">First Name</th>
                                             <th class="py-3 px-6 text-left">Last Name</th>
                                             <th class="py-3 px-6 text-center">Middle Name</th>
+                                            <th class="py-3 px-6 text-center">Gender</th>
                                             <th class="py-3 px-6 text-center">Birth date</th>
                                             <th class="py-3 px-6 text-center">Contact No.</th>
                                             <th class="py-3 px-6 text-center">Occupation</th>
+                                            <th class="py-3 px-6 text-center">Solo Parent</th>
                                             <th class="py-3 px-6 text-center">PWD</th>
                                             <th class="py-3 px-6 text-center">Ethnicity</th>
                                             <th class="py-3 px-6 text-center">Religion</th>
@@ -83,6 +85,15 @@
                                             <td class="py-3 px-6">
                                                 <input type="text" v-model="residents[index].middle_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                             </td>
+
+                                            <td class="py-3 px-6">
+                                                <select v-model="residents[index].gender" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                                    <option value="Female" selected>Female</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </td>
+
                                             <td class="py-3 px-6">
                                                 <input type="date" v-model="residents[index].birth_date" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                             </td>
@@ -92,6 +103,14 @@
                                             <td class="py-3 px-6">
                                                 <input type="text" v-model="residents[index].occupation" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                             </td>
+
+                                            <td class="py-3 px-6">
+                                                <select v-model="residents[index].solo_parent" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                                    <option value="Yes" selected>Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </td>
+
                                             <td class="py-3 px-6">
                                                 <input type="text" v-model="residents[index].pwd" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                             </td>
@@ -144,12 +163,15 @@
 
                 residents: [
                     {
+                        family_no: '',
                         first_name: '',
                         last_name: '',
                         middle_name: '',
+                        gender: '',
                         birth_date: '',
                         contact_no: '',
                         occupation: '',
+                        solo_parent: '',
                         pwd: '',
                         ethnicity: '',
                         religion: '',
@@ -170,12 +192,15 @@
         methods: {
             addRow(){
                 this.residents.push({
+                        family_no: '',
                         first_name: '',
                         last_name: '',
                         middle_name: '',
+                        gender: '',
                         birth_date: '',
                         contact_no: '',
                         occupation: '',
+                        solo_parent: '',
                         pwd: '',
                         ethnicity: '',
                         religion: '',
@@ -208,12 +233,15 @@
                         sitio: ''
                     },
                     this.residents[0] = {
+                        family_no: '',
                         first_name: '',
                         last_name: '',
                         middle_name: '',
+                        gender: '',
                         birth_date: '',
                         contact_no: '',
                         occupation: '',
+                        solo_parent: '',
                         pwd: '',
                         ethnicity: '',
                         religion: '',

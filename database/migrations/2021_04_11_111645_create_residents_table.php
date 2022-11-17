@@ -18,9 +18,11 @@ class CreateResidentsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('middle_name')->nullable();
+            $table->string('gender');
             $table->date('birth_date');
             $table->string('contact_no')->nullable();
             $table->string('occupation')->nullable();
+            $table->string('solo_parent');
             $table->string('pwd')->nullable();
             $table->string('ethnicity')->nullable();
             $table->string('religion')->nullable();

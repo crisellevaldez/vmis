@@ -76,8 +76,11 @@ class ResidentController extends Controller
     {
         $this->validate($request, [
             'residents.*.first_name' => 'required',
-            'residents*.last_name' => 'required',
-            'residents*.birth_date' => 'required',
+            'residents.*.last_name' => 'required',
+            'residents.*.gender' => 'required',
+            'residents.*.birth_date' => 'required',
+            'residents.*.solo_parent' => 'required',
+            'residents.*.family_no' => 'required',
             'house_info.house_number' => 'required|unique:houses,house_number',
             'house_info.street' => 'required',
             'house_info.sitio' => 'required',
@@ -91,7 +94,14 @@ class ResidentController extends Controller
                 'first_name' => $value['first_name'],
                 'last_name' => $value['last_name'],
                 'middle_name' => $value['middle_name'],
+                'gender' => $value['gender'],
                 'birth_date' => $value['birth_date'],
+                'contact_no' => $value['contact_no'],
+                'solo_parent' => $value['solo_parent'],
+                'pwd' => $value['pwd'],
+                'ethnicity' => $value['ethnicity'],
+                'religion' => $value['religion'],
+                'school' => $value['school'],
                 'family_no' => $value['family_no'],
                 'house_id' => $house_id
             ];
@@ -115,6 +125,13 @@ class ResidentController extends Controller
             'first_name' => $request['resident']['first_name'],
             'last_name' => $request['resident']['last_name'],
             'middle_name' => $request['resident']['middle_name'],
+            'gender' =>  $request['resident']['gender'],
+            'contact_no' =>  $request['resident']['contact_no'],
+            'solo_parent' =>  $request['resident']['solo_parent'],
+            'pwd' =>  $request['resident']['pwd'],
+            'ethnicity' =>  $request['resident']['ethnicity'],
+            'religion' =>  $request['resident']['religion'],
+            'school' =>  $request['resident']['school'],
             'birth_date' => $request['resident']['birth_date'],
             'family_no' => $request['resident']['family_no'],
             'house_id' => $request['house_info'][0]['id']

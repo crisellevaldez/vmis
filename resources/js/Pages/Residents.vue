@@ -148,6 +148,10 @@
                                         <td class="py-3">
                                             <input type="text" placeholder="Middle Name" style="width: 150px" v-model="residents[index].middle_name" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                         </td>
+
+                                        <td class="py-3">
+                                            <input type="text" placeholder="Gender" style="width: 150px" v-model="residents[index].gender" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                        </td>
                                         
                                         <td class="py-3">
                                             <input type="date" placeholder="Birth date" style="width: 180px" v-model="residents[index].birth_date" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
@@ -166,6 +170,16 @@
                                         <td class="py-3 ">
                                             <input type="text" placeholder="Occupation" style="width: 200px" v-model="residents[index].occupation" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                         </td>
+
+                                        <td class="py-3">
+                                            <td class="py-3 px-6">
+                                                <select v-model="residents[index].solo_parent" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </td>
+                                        </td>
+
                                         <td class="py-3 ">
                                             <input type="text" placeholder="PWD" style="width: 150px" v-model="residents[index].pwd" class="bg-grey-lighter text-grey-darker py-2 font-normal rounded text-grey-darkest border border-grey-lighter rounded-l-none ">
                                         </td>
@@ -232,12 +246,15 @@
 
             addRow(){
                 this.residents.push({
+                        family_no: '',
                         first_name: '',
                         last_name: '',
                         middle_name: '',
+                        gender: '',
                         birth_date: '',
                         contact_no: '',
                         occupation: '',
+                        solo_parent: '',
                         pwd: '',
                         ethnicity: '',
                         religion: '',
