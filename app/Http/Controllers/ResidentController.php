@@ -118,7 +118,9 @@ class ResidentController extends Controller
             'resident.first_name' => 'required',
             'resident.last_name' => 'required',
             'resident.birth_date' => 'required',
-            'resident.family_no' => 'required'
+            'resident.family_no' => 'required',
+            'resident.gender' => 'required',
+            'resident.solo_parent' => 'required'
         ]);
 
         $data [] = [
